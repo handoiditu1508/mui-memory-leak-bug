@@ -1,7 +1,7 @@
 import { Box, Button, styled } from "@mui/material";
 import { useState } from 'react';
 import './App.css';
-import styled2 from "styled-components";
+import styled2 from "styled-components/macro";
 
 type MyModel = {
   id: number;
@@ -104,6 +104,18 @@ function App() {
       <div style={{ backgroundColor: models[7].color }}>{models[7].id}</div>
       <div style={{ backgroundColor: models[8].color }}>{models[8].id}</div>
       <div style={{ backgroundColor: models[9].color }}>{models[9].id}</div> */}
+
+      {/* ✅ */}
+      {/* <Box css={`background-color: ${models[0].color};`}>{models[0].id}</Box>
+      <Box css={`background-color: ${models[1].color};`}>{models[1].id}</Box>
+      <Box css={`background-color: ${models[2].color};`}>{models[2].id}</Box>
+      <Box css={`background-color: ${models[3].color};`}>{models[3].id}</Box>
+      <Box css={`background-color: ${models[4].color};`}>{models[4].id}</Box>
+      <Box css={`background-color: ${models[5].color};`}>{models[5].id}</Box>
+      <Box css={`background-color: ${models[6].color};`}>{models[6].id}</Box>
+      <Box css={`background-color: ${models[7].color};`}>{models[7].id}</Box>
+      <Box css={`background-color: ${models[8].color};`}>{models[8].id}</Box>
+      <Box css={`background-color: ${models[9].color};`}>{models[9].id}</Box> */}
 
       <Button variant="contained" onClick={clickHandler}>Update Color</Button>
     </div>
