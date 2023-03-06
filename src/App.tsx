@@ -1,6 +1,7 @@
 import { Box, Button, styled } from "@mui/material";
 import { useState } from 'react';
 import './App.css';
+import styled2 from "styled-components";
 
 type MyModel = {
   id: number;
@@ -25,6 +26,14 @@ const StyledBox2 = styled(Box, { shouldForwardProp: prop => prop !== "currentCol
 }>(({ theme, currentColor }) => ({
   backgroundColor: currentColor
 }));
+
+const StyledBox3 = styled2(Box).withConfig({
+  shouldForwardProp(prop, defaultValidatorFn) {
+    return !['currentColor'].includes(prop) && defaultValidatorFn(prop)
+  },
+}) <{ currentColor: string; }>`
+background-color: ${props => props.currentColor};
+`;
 
 function App() {
   const [models, setModels] = useState<MyModel[]>([
@@ -55,7 +64,10 @@ function App() {
       {/* {models.map(model => <StyledBox1 key={model.id}>{model.id}</StyledBox1>)} */}
 
       {/* ❌ */}
-      {models.map(model => <StyledBox2 key={model.id} currentColor={model.color}>{model.id}</StyledBox2>)}
+      {/* {models.map(model => <StyledBox2 key={model.id} currentColor={model.color}>{model.id}</StyledBox2>)} */}
+
+      {/* ✅ */}
+      {models.map(model => <StyledBox3 key={model.id} currentColor={model.color}>{model.id}</StyledBox3>)}
 
       {/* ❌ */}
       {/* <StyledBox2 currentColor={models[0].color}>{models[0].id}</StyledBox2>
